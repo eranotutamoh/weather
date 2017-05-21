@@ -1,3 +1,4 @@
+/* tslint:disable */
 {
   "rulesDirectory": [
     "node_modules/codelyzer"
