@@ -1,5 +1,5 @@
 <h1>
   {{title}}
 </h1>
-<h2>{{local}}</h2>
-<app-local [locale]="local" (slobbed)="obeyOutput($event)"></app-local>
+<h3 *ngIf="error">{{error}}</h3>
+<app-local [localCoord]="localCoords" (slobbed)="obeyOutput($event)"></app-local>

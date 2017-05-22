@@ -6,7 +6,7 @@ import { Component, EventEmitter, OnInit, Input, Output } from '@angular/core';
   styleUrls: ['./local.component.css']
 })
 export class LocalComponent implements OnInit {
- @Input() locale: String;
+ @Input() localCoord: Object;
  @Output() slobbed = new EventEmitter<String>();
 
   constructor() { }
@@ -15,7 +15,7 @@ export class LocalComponent implements OnInit {
   }
 
   slob(): void {
-      console.log('SLOB');
+      console.log('SLOB', this.localCoord);
       this.slobbed.emit('SLOB said hello');
   }
 

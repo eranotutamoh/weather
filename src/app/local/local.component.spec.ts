@@ -23,7 +23,7 @@ describe('LocalComponent', () => {
     fixture.detectChanges();
     localeEl  = fixture.debugElement.query(By.css('p'));
     expectedLocale = 'Havana';
-    component.locale = expectedLocale;
+    component.localCoord = expectedLocale;
     fixture.detectChanges();
   });
 
@@ -31,8 +31,5 @@ describe('LocalComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it(`should display default locale`, () => {
-    console.log('Locale', localeEl.nativeElement.textContent)
-    expect(localeEl.nativeElement.textContent).toContain(expectedLocale);
-  });
+
 });

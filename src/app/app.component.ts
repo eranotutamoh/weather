@@ -9,13 +9,15 @@ import {LocalService} from './service/local.service';
 })
 export class AppComponent  implements OnInit {
   title = 'Weather';
-  local = 'Loading local data';
+  localCoords: Object;
+  error: String;
 
   constructor(private localService: LocalService) { }
 
   ngOnInit(): void {
-    this.localService.getLocale().then(local => this.local = local);
-    navigator.geolocation.getCurrentPosition((pos) => console.log(pos));
+    this.localService.getLocale().then(coord => this.localCoords = coord )
+        .catch((err => this.error = err));
+
   }
 
   obeyOutput(msg: String) {
