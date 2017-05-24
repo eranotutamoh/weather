@@ -9,7 +9,6 @@ export class LocalService {
     if (!('geolocation' in navigator)) { return Promise.reject('Find My Location not supported.'); }
     return new Promise( ( resolve, reject ) => {
       navigator.geolocation.getCurrentPosition( ( position ) => {
-
         const lat  = position.coords.latitude;
         const long = position.coords.longitude;
         resolve( { lat, long } );

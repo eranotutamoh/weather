@@ -1,11 +1,11 @@
-import { Component, EventEmitter, OnInit, Input, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, OnChanges, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-local',
   templateUrl: './local.component.html',
   styleUrls: ['./local.component.css']
 })
-export class LocalComponent implements OnInit {
+export class LocalComponent implements OnInit, OnChanges {
  @Input() localCoord: Object;
  @Output() slobbed = new EventEmitter<String>();
 
@@ -14,6 +14,10 @@ export class LocalComponent implements OnInit {
   ngOnInit() {
   }
 
+  ngOnChanges() {
+      if (this.localCoord) { // get details from api
+           }
+  }
   slob(): void {
       console.log('SLOB', this.localCoord);
       this.slobbed.emit('SLOB said hello');
