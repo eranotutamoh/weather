@@ -1,8 +1,5 @@
-import { TestBed, async , fakeAsync, tick, ComponentFixture} from '@angular/core/testing';
-import { DebugElement } from '@angular/core';
-import { By } from '@angular/platform-browser';
+import { TestBed, async , ComponentFixture} from '@angular/core/testing';
 import { AppComponent } from './app.component';
-import { LocalComponent } from './local/local.component';
 import {LocalService} from './service/local.service';
 
 describe('AppComponent', () => {
@@ -10,17 +7,21 @@ describe('AppComponent', () => {
   let fixture: ComponentFixture<AppComponent>;
   let spy: jasmine.Spy;
   let localService: LocalService;
-
   const testLocale = {'latitude' : 100 , 'longitude' : 200 };
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
-        AppComponent,
-        LocalComponent
+        AppComponent
       ],
-      providers:    [ LocalService ]
-    }).compileComponents();
+      providers: [ LocalService ]
+    })
+    .overrideComponent(AppComponent, {
+      set: {
+        template: `<h1>{{title}}</h1>`
+      }
+    })
+    .compileComponents();
 
   }));
 

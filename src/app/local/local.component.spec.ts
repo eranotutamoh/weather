@@ -1,8 +1,18 @@
 import { async, ComponentFixture, TestBed,  } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
-
+import {WeatherSummaryService} from '../service/weather-summary.service';
+import {LocalService} from '../service/local.service';
 import { LocalComponent } from './local.component';
+
+class WeatherSummaryServiceSpy {
+  testWeather = {Forecast: 'Rain'};
+
+  getWeatherByCoords = jasmine.createSpy('getWeatherByCoords').and.callFake(
+      () => this.testWeather
+  );
+}
+
 
 describe('LocalComponent ', () => {
   let component: LocalComponent;
@@ -10,7 +20,15 @@ describe('LocalComponent ', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LocalComponent ]
+      declarations: [ LocalComponent ],
+      providers: [LocalService]
+    })
+    .overrideComponent(LocalComponent, {
+      set: {
+        providers: [
+          { provide: WeatherSummaryService, useClass: WeatherSummaryServiceSpy }
+        ]
+      }
     })
     .compileComponents();
   }));
@@ -35,7 +53,10 @@ describe('LocalComponent when inside a test host', () => {
   beforeEach( async(() => {
     TestBed.overrideComponent(LocalComponent, {
       set: {
-        template: '<p>{{localCoord.lat}}</p>'
+        template: '<p>{{localCoord.lat}}</p>',
+        providers: [
+          { provide: WeatherSummaryService, useClass: WeatherSummaryServiceSpy }
+        ]
       }
     });
     TestBed.configureTestingModule({
