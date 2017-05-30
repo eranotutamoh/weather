@@ -2,4 +2,4 @@
   {{title}}
 </h1>
 <h3 *ngIf="error">{{error}}</h3>
-<app-local [localCoord]="localCoords" (slobbed)="obeyOutput($event)"></app-local>
+<app-local [localCoord]="localCoords" (updatedWeather)="theWeather($event)"></app-local>

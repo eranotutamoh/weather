@@ -4,15 +4,14 @@ import { DebugElement } from '@angular/core';
 import {WeatherSummaryService} from '../service/weather-summary.service';
 import {LocalService} from '../service/local.service';
 import { LocalComponent } from './local.component';
+import { Observable } from 'rxjs/';
 
 class WeatherSummaryServiceSpy {
   testWeather = {Forecast: 'Rain'};
-
   getWeatherByCoords = jasmine.createSpy('getWeatherByCoords').and.callFake(
-      () => this.testWeather
+      () => Observable.of(this.testWeather)
   );
 }
-
 
 describe('LocalComponent ', () => {
   let component: LocalComponent;
@@ -36,6 +35,7 @@ describe('LocalComponent ', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(LocalComponent);
     component = fixture.componentInstance;
+    component.weather = {Rain: '70%', Temp: '20 C'};
   });
 
   it('should create local component', () => {
@@ -75,23 +75,19 @@ describe('LocalComponent when inside a test host', () => {
     expect(localEl.nativeElement.textContent).toEqual(testCoords.lat);
   });
 
-  /*it('should raise selected event when clicked', () => {
-    click(heroEl);
-    // selected hero should be the same data bound hero
-    expect(testHost.selectedHero).toBe(testHost.hero);
-  });*/
+  it('should output weather to host app', () => {
+    expect(testHost.theWeather).toEqual({Forecast: 'Rain'});
+  });
 });
-
-
-
 
 ////// Test App Component //////
 import { Component } from '@angular/core';
 
 @Component({
-  template: `<app-local [localCoord]="localCoords" (slobbed)="obeyOutput($event)"></app-local>`
+  template: `<app-local [localCoord]="localCoords" (updatedWeather)="updateWeather($event)"></app-local>`
 })
 class TestAppComponent {
   localCoords = {lat: 100 , long: 200};
-  obeyOutput(msg: String) { console.log('OBEYED!!!!', msg); }
+  theWeather: Object;
+  updateWeather(msg: Object) { this.theWeather = msg; }
 }

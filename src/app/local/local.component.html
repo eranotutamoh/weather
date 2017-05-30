@@ -1,4 +1,2 @@
 <p *ngIf="!localCoord">Loading local weather ...</p>
-<p (click)="slob()" *ngIf="localCoord">
-  {{localCoord.lat}}
-</p>
+<p *ngIf="errorMessage">{{errorMessage}}</p>

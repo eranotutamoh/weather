@@ -7,19 +7,21 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class WeatherSummaryService {
 
-  private weatherByCoordsApi = 'http://api.openweathermap.org/data/2.5/weather?lat=-41&lon=174&appid=24a99ba5e26859506a20ade99664d3d3';
+  private baseUrl = 'http://api.openweathermap.org/data/2.5/weather'; // ?lat=-41&lon=174&appid=';
+  private appId = '24a99ba5e26859506a20ade99664d3d3';
+  private   formats = '&units=metric';
 
   constructor(private http: Http) { }
 
-  getWeatherByCoords(coords: Object): Observable<any[]> {
-    return this.http.get(`${this.weatherByCoordsApi}${coords}`)
-        .map(this.extractData)
+  getWeatherByCoords(coords: Object) {
+    return this.http.get(`${this.baseUrl}?appid=${this.appId}&lat=${coords['lat']}&lon=${coords['long']}${this.formats}`)
+       .map(this.extractData)
         .catch(this.handleError);
   }
 
   private extractData(res: Response) {
     const body = res.json();
-    return body.data || { };
+    return body || { };
   }
 
   private handleError (error: Response | any) {

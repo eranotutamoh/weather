@@ -9,7 +9,7 @@ import {WeatherSummaryService} from '../service/weather-summary.service';
 })
 export class LocalComponent implements OnInit, OnChanges {
  @Input() localCoord: Object;
- @Output() slobbed = new EventEmitter<String>();
+ @Output() updatedWeather = new EventEmitter<Object>();
  weather: Object;
  errorMessage: string;
 
@@ -19,15 +19,20 @@ export class LocalComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges() {
-      if (this.localCoord) { // get details from api
-         /* this.weatherSummaryService.getWeatherByCoords(this.localCoord).subscribe(
-              weather => this.weather = weather,
-              error =>  this.errorMessage = <any>error);*/
-           }
+      if (this.localCoord) {
+          this.weatherSummaryService.getWeatherByCoords(this.localCoord).subscribe(
+              weather => {
+                  this.weather = weather;
+                  this.updateWeather();
+                  return weather;
+              },
+                      error => this.errorMessage = <any>error
+            );
+      }
   }
-  slob(): void {
-      console.log('SLOB', this.localCoord);
-      this.slobbed.emit('SLOB said hello');
+
+  updateWeather(): void {
+      this.updatedWeather.emit(this.weather);
   }
 
 }

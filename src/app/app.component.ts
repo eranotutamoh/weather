@@ -20,7 +20,7 @@ export class AppComponent  implements OnInit {
 
   }
 
-  obeyOutput(msg: String) {
+  theWeather(msg: Object) {
     console.log('OBEYED!!!!', msg);
   }
 }
