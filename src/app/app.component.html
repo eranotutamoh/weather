@@ -3,3 +3,4 @@
 </h1>
 <h3 *ngIf="error">{{error}}</h3>
 <app-local [localCoord]="localCoords" (updatedWeather)="theWeather($event)"></app-local>
+<app-weather-summary *ngIf="localCoords" [weatherSummary]="weatherSummary"></app-weather-summary>

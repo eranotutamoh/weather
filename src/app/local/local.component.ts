@@ -26,7 +26,11 @@ export class LocalComponent implements OnInit, OnChanges {
                   this.updateWeather();
                   return weather;
               },
-                      error => this.errorMessage = <any>error
+              error => {
+                  console.log(<any>error);
+                  this.weather = {error: 'Problem accessing weather.'};
+                  this.updateWeather();
+              }
             );
       }
   }

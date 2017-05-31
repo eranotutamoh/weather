@@ -1,0 +1,13 @@
+<h3 *ngIf="!apiData">Loading local weather ...</h3>
+<div *ngIf="apiData">
+  <h3>{{weatherSummary.error}}</h3>
+  <h2>{{locale}}</h2>
+  <img [src]="conditionIcon">
+  <h4>Wind: {{wind.direction}} - {{wind.speed}} kph</h4>
+  <h4>{{pressure}}</h4>
+  <h4>{{humidity}}%</h4>
+  <h4>{{temp}} &#176;C</h4>
+  <h4>{{sunrise}}</h4>
+  <h4>{{sunset}}</h4>
+</div>
+

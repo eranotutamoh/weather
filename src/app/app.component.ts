@@ -11,6 +11,7 @@ export class AppComponent  implements OnInit {
   title = 'Weather';
   localCoords: Object;
   error: String;
+  weatherSummary: Object;
 
   constructor(private localService: LocalService) { }
 
@@ -20,7 +21,7 @@ export class AppComponent  implements OnInit {
 
   }
 
-  theWeather(msg: Object) {
-    console.log('OBEYED!!!!', msg);
+  theWeather(weatherSummary: Object) {
+    this.weatherSummary = weatherSummary;
   }
 }
