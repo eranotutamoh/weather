@@ -1,11 +1,26 @@
 @import 'layout/grid';
-// scss-lint:disable PlaceholderInExtend
+
 section.custom {
-  @extend .row;
+  @extend %row; // % suppress output of row into css
+  width: 75%;
 }
 
+
+@mixin hahaha($values...) {
+  number: length($values);
+  last: nth($values, length($values));
+  values: $values;
+}
+.list1 {
+  @include hahaha(value1);
+}
+.list2 {
+  @include hahaha(value1, value2, value3);
+}
+
+
 $color: orange;
-div{
+div {
   color: $color;
   font-size: 11px + 1px;
 
@@ -14,3 +29,88 @@ div{
   }
 }
 
+// interpolation of variables
+$name: class;
+$direction: left;
+$units: px;
+.#{$name} {
+  margin-#{$direction}: 20#{$units};
+}
+
+// @mixin's
+@mixin hidden-mobile {
+  @media (max-width: 767px) {
+    display: none;
+  }
+}
+
+.banner {
+  @include hidden-mobile
+}
+
+@mixin random {
+  height: 100%;
+}
+
+.full-height {
+  @include random;
+  color: blue;
+}
+
+// @mixin's w/ arguments
+@import 'layout/gradients';
+header {
+  @include gradient-horizontal(yellow, green);
+  color: white;
+  padding: 20px;
+}
+
+// @function's - functions created with @function directive return a single value based on their input parameters
+$browser-context: 16;
+@function px_to_em($pixels, $context: $browser-context) {
+  @return ($pixels / $context) * 1em;
+}
+
+h1 {
+  font-size: px_to_em(20);
+}
+
+$light-color: green;
+$default-color: red;
+$dark-color: darkred;
+nav {
+  ul {
+    li { // descendant selector
+      color: $light-color;
+    }
+    > li { // child combinator
+      font-size: 1.2em;
+    }
+  }
+  ~ p { // general sibling combinator
+    color: $default-color;
+  }
+  + p { // adjacent sibling combinator
+    color: $dark-color;
+    &:hover {  // parent selector
+      color: $light-color;
+    }
+  }
+}
+// Use& to refer to parent selector
+.test {
+  &-link {
+    display: none;
+  }
+}
+.first {
+  &.second {
+    width: 90%; }
+}
+$normal-color: red;
+$home-color: orange;
+.normal {
+  color: $normal-color;
+  .home & {
+    color: $home-color;
+  } }

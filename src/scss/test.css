@@ -1,13 +1,71 @@
 body {
   background-color: blanchedalmond; }
 
-.row, section.custom {
-  width: 100%; }
+section.custom {
+  width: 100%;
+  background-color: aqua;
+  min-height: 200px; }
+
+section.custom {
+  width: 75%; }
+
+.list1 {
+  number: 1;
+  last: value1;
+  values: value1; }
+
+.list2 {
+  number: 3;
+  last: value3;
+  values: value1, value2, value3; }
 
 div {
   color: orange;
   font-size: 12px; }
   div:hover {
     color: #996300; }
+
+.class {
+  margin-left: 20px; }
+
+@media (max-width: 767px) {
+  .banner {
+    display: none; } }
+
+.full-height {
+  height: 100%;
+  color: blue; }
+
+header {
+  background: yellow;
+  background-image: linear-gradient(to right, yellow 0%, green 100%);
+  background-repeat: repeat-x;
+  color: white;
+  padding: 20px; }
+
+h1 {
+  font-size: 1.25em; }
+
+nav ul li {
+  color: green; }
+nav ul > li {
+  font-size: 1.2em; }
+nav ~ p {
+  color: red; }
+nav + p {
+  color: darkred; }
+  nav + p:hover {
+    color: green; }
+
+.test-link {
+  display: none; }
+
+.first.second {
+  width: 90%; }
+
+.normal {
+  color: red; }
+  .home .normal {
+    color: orange; }
 
 /*# sourceMappingURL=test.css.map */

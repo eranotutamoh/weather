@@ -16,6 +16,7 @@ export class WeatherSummaryComponent implements OnInit, OnChanges {
   temp: Number;
   sunrise: String;
   sunset: String;
+  gold = 'lime';
 
   constructor() { }
 

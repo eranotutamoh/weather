@@ -1,6 +1,8 @@
 body {
   background-color: blanchedalmond;
 }
-.row {
+%row { // row is extend only class - % suppresses output of row into css
     width: 100%;
+  background-color: aqua;
+  min-height: 200px;
   }
