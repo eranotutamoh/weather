@@ -1,0 +1,57 @@
+.container {
+    display: flex; // or inline-flex
+}
+
+/*
+.container {
+    flex-direction: row | row-reverse | column | column-reverse;
+}
+.container{
+    flex-wrap: nowrap | wrap | wrap-reverse;
+}*/
+.contaner {
+     flex-flow:  column wrap-reverse; // shorthand for <‘flex-direction’> || <‘flex-wrap’>
+ }
+
+.container {
+    justify-content: flex-start; // or  flex-end | center | space-between | space-around -- defines the alignment along the main axis (individual items)
+}
+
+.container {
+    align-items: flex-start; // or  flex-end | center | baseline | stretch -- think of it as the justify-content version for the cross-axis (individual items)
+}
+
+.container {
+    align-content: flex-start; // or  flex-end | center | space-between | space-around | stretch -- when more than one row/column of items -  (rows/columns of items in cross axis)
+}
+
+
+/*    ITEMS    */
+.item {
+    order: 3; // <integer> the order property controls the order in which they appear in the flex container
+}
+
+/*.item {
+    flex-grow: 1; // default 0     if all items have flex-grow set to 1, the remaining space in the container will be distributed equally to all children.
+                  // if one of the children has a value of 2, the remaining space would take up twice as much space as the others (or it will try to, at least).
+}
+
+.item {
+    flex-shrink: 1;  //  default 1  this defines the ability for a flex item to shrink if necessary.
+}
+
+.item {
+    flex-basis: 20%; // <length> | auto --  default auto --  This defines the default size of an element before the remaining space is distributed.
+                                                             If set to 0, the extra space around content isn't factored in.
+                                                             If set to auto, the extra space is distributed based on its flex-grow value.
+}*/
+
+.item {
+    flex: 0 1 auto;     //  none | [ <'flex-grow'> <'flex-shrink'>? || <'flex-basis'> ]
+                            Default is 0 1 auto.
+                            Shorthand for flex-grow, flex-shrink and flex-basis combined. The second and third parameters (flex-shrink and flex-basis) are optional.
+}
+
+.item {
+    align-self: center;  //   auto | flex-start | flex-end | center | baseline | stretch;
+}

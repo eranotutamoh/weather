@@ -1,13 +1,50 @@
-<h3 *ngIf="!apiData">Loading local weather ...</h3>
-<div *ngIf="apiData">
-  <h3>{{weatherSummary.error}}</h3>
-  <h2>{{locale}}</h2>
-  <img [src]="conditionIcon">
-  <h4>Wind: {{wind.direction}} - {{wind.speed}} kph</h4>
-  <h4>{{pressure}}</h4>
-  <h4>{{humidity}}%</h4>
-  <h4>{{temp}} &#176;C</h4>
-  <h4>{{sunrise}}</h4>
-  <h4 [style.color]="gold">{{sunset}}</h4>
+<h3 *ngIf="!apiData  && !error">loading local weather ...</h3>
+<h3 [ngClass]="'error'" *ngIf="error">{{error}}</h3>
+<div [ngClass]="'wrap'" *ngIf="apiData">
+  <h1><span><img [src]="conditionIcon"></span><span >{{locale}}</span><span></span></h1>
+  <main>
+    <section [ngClass]="'wind'">
+      <div [ngClass]="'parent'">
+        <div [ngClass]="'eastwest west'"><span>W</span></div>
+        <div [ngClass]="'container'">
+          <div [ngClass]="'northsouth'"><span>N</span></div>
+          <div [ngClass]="'inner-container'">
+            <div [ngClass]="'circle'">
+              <p>{{windSpeed}}<br> <span>kph</span></p>
+              <div [ngClass]="'direction'" [style.transform]="windDirection"><div></div></div>
+            </div>
+          </div>
+          <div [ngClass]="'northsouth'"><span>S</span></div>
+        </div>
+        <div [ngClass]="'eastwest'"><span>E</span></div>
+      </div>
+      <h5>wind</h5>
+    </section>
+    <section>
+      <span>{{temp}} <span>&#176;C</span></span>
+      <h5>temperature</h5>
+    </section>
+    <section>
+      <span>{{pressure}}</span>
+      <h5>hectopascals</h5>
+    </section>
+    <section>
+      <span>{{humidity}}<span>%</span></span>
+      <h5>humidity</h5>
+    </section>
+    <section>
+      <span>{{rain}} mm</span>
+      <h5>rain last 3 hours</h5>
+    </section>
+    <section>
+      <span>{{sunrise}}</span>
+      <h5>sunrise</h5>
+    </section>
+    <section>
+      <span>{{sunset}}</span>
+      <h5>sunset</h5>
+    </section>
+  </main>
+
 </div>
 

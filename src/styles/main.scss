@@ -1,0 +1,153 @@
+$circle: #23bace;
+
+body {
+  font-family: 'Monda', serif;
+  font-size: 18px;
+}
+.wrap {
+  max-width: 480px;
+  margin: 0 auto;
+}
+main {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  padding: 5px;
+  section:first-child {
+      margin-top: 0;
+    }
+  section:last-child {
+    margin-bottom: 0;
+  }
+  section {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    flex: 1;
+    border: 1px solid greenyellow;
+    border-radius: 10px;
+    margin: 10px 0;
+    padding: 0 10px;
+    width: 65%;
+    > span:first-child {
+      font-size: 1.5em;
+      span {
+        font-size: 0.7em;
+      }
+    }
+    &:nth-child(2) {
+      border-color: #ff8145;
+    }
+    &:nth-child(3) {
+      border-color: $circle;
+    }
+    &:nth-child(4) {
+      border-color: gold;
+    }
+    &:nth-child(5) {
+      border-color: plum;
+    }
+    &:nth-child(6) {
+      border-color: #e65050;
+    }
+    &:nth-child(7) {
+      border-color: #731818;
+    }
+    h5 {
+      margin: 0;
+      text-align: center;
+    }
+  }
+}
+h1 {
+  display: flex;
+  margin: 0;
+  span:first-child {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    img {
+      margin-left: 30%;
+    }
+  }
+  span.locale {
+    flex: 2;
+  }
+  span:last-child {
+    flex: 1;
+  }
+}
+h3 {
+  text-align: center;
+  &.error {
+    border: 1px solid crimson;
+    color: firebrick;
+  }
+}
+.wind {
+  .parent {
+    display: flex;
+    flex-flow: row nowrap;
+    height: 200px;
+    width: 200px;
+    > div, .northsouth {
+      display:flex;
+      flex-flow: column nowrap;
+      color: #333;
+    }
+  .eastwest  {
+    flex: 1 1 0;
+    font-family: "Times New Roman" , serif;
+    margin: auto;
+    text-align: center;
+    &.west {
+      text-align: left;
+    }
+  }
+  .northsouth {
+    flex: 1 1 0;
+    justify-content: center;
+    font-family: "Times New Roman" , serif;
+    margin: auto;
+  }
+  .container, .inner-container {
+    flex: 4;
+  }
+  .circle {
+    border-radius: 50%;
+    background-color: $circle;
+    display: flex;
+    height: 150px;
+    width: 150px;
+    position: relative;
+    p {
+      background-color: $circle;
+      border: 10px solid $circle;
+      border-radius: 50%;
+      line-height: 0.8;
+      margin: auto;
+      position: relative;
+      text-align: center;
+      z-index: 10;
+      span {
+        font-size: 80%;
+      }
+    }
+  }
+  .direction{
+    height: 12px;
+    position: absolute;
+    top: 47%;
+    transform: rotate(90deg);
+    transform-origin: right center 0;
+    width: 50%;
+    div {
+      background-color: white;
+      border-radius: 50%;
+      height: 12px;
+      margin-left: 5px;
+      width: 12px;
+    }
+  }
+  }
+}

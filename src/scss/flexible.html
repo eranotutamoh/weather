@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Flexing</title>
+    <style>
+        body {
+            background-color: aquamarine;
+            margin: 25px;
+        }
+        .parent {
+            display: flex;
+            flex-flow: row nowrap;
+            height: 250px;
+            width: 250px;
+            background-color: white;
+        }
+        .parent > div, .northsouth {
+            display:flex;
+            flex-flow: column nowrap;
+            color: #333;
+        }
+        .eastwest  {
+            flex: 1 1 0;
+            margin: auto;
+            text-align: center;
+        }
+        .northsouth {
+            flex: 1 1 0;
+            justify-content: center;
+            margin: auto;
+        }
+        .container, .inner-container {
+            flex: 4;
+        }
+        .circle {
+            border-radius: 50%;
+            background-color: #23bace;
+            display: flex;
+            height: 200px;
+            width: 200px;
+            position: relative;
+        }
+        .circle p {
+            background-color: #23bace;
+            border: 10px solid #23bace;
+            border-radius: 50%;
+            line-height: 0.8;
+            margin: auto;
+            position: relative;
+            text-align: center;
+            z-index: 10;
+
+        }
+        .circle p span {
+            font-size: 80%;
+        }
+        .direction{
+            height: 12px;
+            position: absolute;
+            top: 47%;
+            transform: rotate(90deg);
+            transform-origin: right center 0;
+            width: 50%;
+         }
+        .direction div {
+            background-color: white;
+            border-radius: 50%;
+            height: 12px;
+            margin-left: 5px;
+            width: 12px;
+        }
+
+    </style>
+</head>
+<body>
+<section>
+    <div class="parent">
+        <div class="eastwest"><span>W</span></div>
+        <div class="container">
+            <div class="northsouth"><span>N</span></div>
+            <div class="inner-container">
+                <div class="circle">
+                    <p>34.87 <br> <span>kph</span></p>
+                    <div class="direction"><div></div></div>
+                </div>
+            </div>
+            <div class="northsouth"><span>S</span></div>
+        </div>
+        <div class="eastwest"><span>E</span></div>
+    </div>
+    <h5>Wind</h5>
+</section>
+</body>
+</html>

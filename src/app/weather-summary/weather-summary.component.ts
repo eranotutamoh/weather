@@ -10,13 +10,15 @@ export class WeatherSummaryComponent implements OnInit, OnChanges {
   locale: String;
   conditionIcon: String;
   apiData: boolean;
-  wind: Object;
+  windSpeed: String;
+  windDirection: String;
   pressure: Number;
   humidity: Number;
   temp: Number;
+  rain = 0;
   sunrise: String;
   sunset: String;
-  gold = 'lime';
+  error: String;
 
   constructor() { }
 
@@ -29,20 +31,32 @@ export class WeatherSummaryComponent implements OnInit, OnChanges {
   }
 
   formatWeather(weather) {
-    console.log(weather);
-    this.locale = weather.name;
-    this.conditionIcon = `http://openweathermap.org/img/w/${weather.weather[0].icon}.png`;
-    this.wind = {direction: weather.wind.deg, speed: this.formatWindSpeed(weather.wind.speed)}
-    this.pressure = weather.main.pressure;
-    this.humidity = weather.main.humidity;
-    this.temp = weather.main.temp;
-    this.sunrise = this.formatTime(weather.sys.sunrise);
-    this.sunset = this.formatTime(weather.sys.sunset);
-    this.apiData = true;
+    if (weather.error) {
+      this.error = weather.error;
+    } else {
+      console.log('::::', 'rain' in weather);
+      this.locale = weather.name;
+      this.conditionIcon = `http://openweathermap.org/img/w/${weather.weather[0].icon}.png`;
+      this.windSpeed = this.formatWindSpeed(weather.wind.speed);
+      this.windDirection = this.formatWindDirection(weather.wind.deg);
+      this.pressure = weather.main.pressure;
+      this.humidity = weather.main.humidity;
+      this.temp = weather.main.temp;
+      if ('rain' in weather) { this.rain = weather.rain['3h']; }
+      this.sunrise = this.formatTime(weather.sys.sunrise);
+      this.sunset = this.formatTime(weather.sys.sunset);
+      this.apiData = true;
+    }
   }
 
   formatWindSpeed(speed) {
-    return speed * 3.6; // convert m/s to kph
+     // convert m/s to kph
+    return  (speed *= 3.6).toPrecision(4);
+  }
+
+  formatWindDirection(direction) {
+    console.log('WIND:', direction);
+    return  `rotate(${direction + 90}deg)`;
   }
 
   formatTime(time) {
