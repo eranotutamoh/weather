@@ -1,6 +1,6 @@
 <h3 *ngIf="!apiData  && !error">loading local weather ...</h3>
 <h3 [ngClass]="'error'" *ngIf="error">{{error}}</h3>
-<div [ngClass]="'wrap'" *ngIf="apiData">
+<div  *ngIf="apiData">
   <h1><span><img [src]="conditionIcon"></span><span >{{locale}}</span><span></span></h1>
   <main>
     <section [ngClass]="'wind'">
@@ -33,7 +33,7 @@
       <h5>humidity</h5>
     </section>
     <section>
-      <span>{{rain}} mm</span>
+      <span>{{rain}} <span>mm</span></span>
       <h5>rain last 3 hours</h5>
     </section>
     <section>

@@ -1,0 +1,122 @@
+body {
+    font-family: 'Monda', serif;
+    font-size: 18px; }
+
+.wrap {
+    max-width: 480px;
+    margin: 0 auto; }
+
+main {
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    padding: 5px; }
+main section:first-child {
+    margin-top: 0; }
+main section:last-child {
+    margin-bottom: 0; }
+main section {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    flex: 1;
+    border: 1px solid greenyellow;
+    border-radius: 10px;
+    margin: 10px 0;
+    padding: 0 10px;
+    width: 65%; }
+main section > span:first-child {
+    font-size: 1.5em; }
+main section > span:first-child span {
+    font-size: 0.7em; }
+main section:nth-child(2) {
+    border-color: #ff8145; }
+main section:nth-child(3) {
+    border-color: #23bace; }
+main section:nth-child(4) {
+    border-color: gold; }
+main section:nth-child(5) {
+    border-color: plum; }
+main section:nth-child(6) {
+    border-color: #e65050; }
+main section:nth-child(7) {
+    border-color: #731818; }
+main section h5 {
+    margin: 0;
+    text-align: center; }
+
+h1 {
+    display: flex;
+    margin: 0; }
+h1 span:first-child {
+    flex: 1;
+    display: flex;
+    justify-content: center; }
+h1 span:first-child img {
+    margin-left: 30%; }
+h1 span.locale {
+    flex: 2; }
+h1 span:last-child {
+    flex: 1; }
+
+h3 {
+    text-align: center; }
+h3.error {
+    border: 1px solid crimson;
+    color: firebrick; }
+
+.wind .parent {
+    display: flex;
+    flex-flow: row nowrap;
+    height: 200px;
+    width: 200px; }
+.wind .parent > div, .wind .parent .northsouth {
+    display: flex;
+    flex-flow: column nowrap;
+    color: #333; }
+.wind .parent .eastwest {
+    flex: 1 1 0;
+    font-family: "Times New Roman" , serif;
+    margin: auto;
+    text-align: center; }
+.wind .parent .eastwest.west {
+    text-align: left; }
+.wind .parent .northsouth {
+    flex: 1 1 0;
+    justify-content: center;
+    font-family: "Times New Roman" , serif;
+    margin: auto; }
+.wind .parent .container, .wind .parent .inner-container {
+    flex: 4; }
+.wind .parent .circle {
+    border-radius: 50%;
+    background-color: #23bace;
+    display: flex;
+    height: 150px;
+    width: 150px;
+    position: relative; }
+.wind .parent .circle p {
+    background-color: #23bace;
+    border: 10px solid #23bace;
+    border-radius: 50%;
+    line-height: 0.8;
+    margin: auto;
+    position: relative;
+    text-align: center;
+    z-index: 10; }
+.wind .parent .circle p span {
+    font-size: 80%; }
+.wind .parent .direction {
+    height: 12px;
+    position: absolute;
+    top: 47%;
+    transform: rotate(90deg);
+    transform-origin: right center 0;
+    width: 50%; }
+.wind .parent .direction div {
+    background-color: white;
+    border-radius: 50%;
+    height: 12px;
+    margin-left: 5px;
+    width: 12px; }
+
