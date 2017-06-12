@@ -15,7 +15,7 @@ export class WeatherSummaryComponent implements OnInit, OnChanges {
   pressure: Number;
   humidity: Number;
   temp: Number;
-  rain = 0;
+  rain: Number;
   sunrise: String;
   sunset: String;
   error: String;
@@ -34,7 +34,6 @@ export class WeatherSummaryComponent implements OnInit, OnChanges {
     if (weather.error) {
       this.error = weather.error;
     } else {
-      console.log('::::', 'rain' in weather);
       this.locale = weather.name;
       this.conditionIcon = `http://openweathermap.org/img/w/${weather.weather[0].icon}.png`;
       this.windSpeed = this.formatWindSpeed(weather.wind.speed);
@@ -43,8 +42,8 @@ export class WeatherSummaryComponent implements OnInit, OnChanges {
       this.humidity = weather.main.humidity;
       this.temp = weather.main.temp;
       if ('rain' in weather) { this.rain = weather.rain['3h']; }
-      this.sunrise = this.formatTime(weather.sys.sunrise);
-      this.sunset = this.formatTime(weather.sys.sunset);
+      this.sunrise = this.formatTime(weather.sys.sunrise, weather.tz);
+      this.sunset = this.formatTime(weather.sys.sunset, weather.tz);
       this.apiData = true;
     }
   }
@@ -55,11 +54,10 @@ export class WeatherSummaryComponent implements OnInit, OnChanges {
   }
 
   formatWindDirection(direction) {
-    console.log('WIND:', direction);
     return  `rotate(${direction + 90}deg)`;
   }
 
-  formatTime(time) {
-    return new Date(time * 1000).toLocaleTimeString();
+  formatTime(time, tz= 'Pacific/Auckland') {
+    return new Date(time * 1000).toLocaleTimeString('en-NZ', {timeZone: tz});
   }
 }

@@ -8,7 +8,6 @@ import {LocalService} from './service/local.service';
   providers: [LocalService]
 })
 export class AppComponent  implements OnInit {
-  title = 'Weather';
   localCoords: Object;
   error: String;
   weatherSummary: Object;

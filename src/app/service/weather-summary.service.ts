@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, Response, Headers, RequestOptions } from '@angular/http';
+import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
@@ -17,6 +17,12 @@ export class WeatherSummaryService {
   getWeatherByCoords(coords: Object) {
     return this.http.get(`${this.baseUrl}?appid=${this.appId}&lat=${coords['lat']}&lon=${coords['long']}${this.formats}`)
        .map(this.extractData)
+        .catch(this.handleError);
+  }
+
+  getWeatherByCity(city: String) {
+    return this.http.get(`${this.baseUrl}?appid=${this.appId}&q=${city}${this.formats}`)
+        .map(this.extractData)
         .catch(this.handleError);
   }
 

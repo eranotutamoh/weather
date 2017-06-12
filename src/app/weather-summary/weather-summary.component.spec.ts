@@ -51,9 +51,9 @@ describe('WeatherSummaryComponent', () => {
     expect(component.rain).toEqual(expectedWeather.rain['3h']);
   });
   it('should initialise sunrise to formatted time', () => {
-    expect(component.sunrise).toEqual(new Date(expectedWeather.sys.sunrise * 1000).toLocaleTimeString());
+    expect(component.sunrise).toEqual(new Date(expectedWeather.sys.sunrise * 1000).toLocaleTimeString('en-NZ', {timeZone: 'Pacific/Auckland'}));
   });
   it('should initialise sunset to formatted time', () => {
-    expect(component.sunset).toEqual(new Date(expectedWeather.sys.sunset * 1000).toLocaleTimeString());
+    expect(component.sunset).toEqual(new Date(expectedWeather.sys.sunset * 1000).toLocaleTimeString('en-NZ', {timeZone: 'Pacific/Auckland'}));
   });
 });

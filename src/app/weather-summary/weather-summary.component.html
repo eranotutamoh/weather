@@ -32,7 +32,7 @@
       <span>{{humidity}}<span>%</span></span>
       <h5>humidity</h5>
     </section>
-    <section>
+    <section *ngIf="rain">
       <span>{{rain}} <span>mm</span></span>
       <h5>rain last 3 hours</h5>
     </section>

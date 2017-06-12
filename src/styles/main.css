@@ -60,10 +60,42 @@ h1 {
     flex: 1; }
 
 h3 {
-  text-align: center; }
+  text-align: center;
+  margin: 0; }
   h3.error {
     border: 1px solid crimson;
     color: firebrick; }
+
+#cities {
+  position: relative; }
+  #cities ul {
+    position: absolute;
+    background-color: white;
+    border: 1px solid gray;
+    border-radius: 10px;
+    z-index: 100;
+    list-style: none;
+    left: 94px;
+    padding: 20px 70px;
+    top: -20px; }
+    #cities ul li {
+      padding: 0 5px; }
+      #cities ul li a {
+        text-decoration: none;
+        color: black;
+        display: block; }
+      #cities ul li:hover {
+        background-color: #9ce5ee;
+        cursor: pointer; }
+  #cities .toggle-icon {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid #666;
+    top: 20px;
+    right: 50px; }
 
 .wind .parent {
   display: flex;
@@ -85,7 +117,9 @@ h3 {
     flex: 1 1 0;
     justify-content: center;
     font-family: "Times New Roman" , serif;
-    margin: auto; }
+    margin: auto;
+    text-align: center;
+    /*safari*/ }
   .wind .parent .container, .wind .parent .inner-container {
     flex: 4; }
   .wind .parent .circle {
@@ -110,6 +144,7 @@ h3 {
     height: 12px;
     position: absolute;
     top: 47%;
+    left: 0;
     transform: rotate(90deg);
     transform-origin: right center 0;
     width: 50%; }

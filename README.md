@@ -13,9 +13,12 @@ Run `ng generate component component-name` to generate a new component. You can 
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
 
--- put dist  folder CONTENTS into code/weather-deploy (replacing existing)
+-- remove main.css from index.html
+-- move main.css styles to bundled css file in dist
+-- delete all but favicon and index.php from deploy/sist
+-- put dist  folder CONTENTS into code/weather-deploy/dist (replacing existing)
 -- cd code/weather-deploy/dist
--- git add .
+-- git add ., commit push heroku master
 
 ## Running unit tests
 

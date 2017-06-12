@@ -23,9 +23,9 @@ describe('LocalComponent ', () => {
       providers: [LocalService]
     })
     .overrideComponent(LocalComponent, {
-      set: {
-        providers: [
-          { provide: WeatherSummaryService, useClass: WeatherSummaryServiceSpy }
+            set: {
+              providers: [
+                { provide: WeatherSummaryService, useClass: WeatherSummaryServiceSpy }
         ]
       }
     })

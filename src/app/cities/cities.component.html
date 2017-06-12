@@ -1,0 +1,9 @@
+<section id="cities">
+  <ul *ngIf="showCities">
+    <li *ngFor="let city of cities" (click)="getWeather(city.iso, city.tz)">
+      {{city.name}}
+    </li>
+    <li><a href="/">Local</a> </li>
+  </ul>
+  <span ngClass="toggle-icon" (click)="toggleCities()"></span>
+</section>
