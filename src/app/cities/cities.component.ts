@@ -5,18 +5,16 @@ import {WeatherSummaryService} from '../service/weather-summary.service';
   selector: 'app-cities',
   templateUrl: './cities.component.html',
   styleUrls: ['./cities.component.css'],
-  providers: [WeatherSummaryService]
 })
-export class CitiesComponent {
+export class CitiesComponent  {
   @Output() updatedWeather = new EventEmitter<Object>();
   weather: Object;
-  errorMessage: string;
   showCities = false;
   cities = [{tz: 'America/New_York', iso: 'providence,us', name: 'Providence RI US'},
             {tz: 'Asia/Dubai', iso: 'dohar,qa', name: 'Dohar Qatar'},
             {tz: 'America/New_York', iso: 'iqaluit,ca', name: 'Iqaluit Nunavut'},
             {tz: 'Australia/Perth', iso: 'perth,au', name: 'Perth WA'}, {tz: 'Asia/Singapore', iso: 'singapore,sg', name: 'Singapore'},
-            {iso: 'antarctica,aq', name: 'Antarctica'}, {tz: 'Europe/Madrid', iso: 'barcelona,es', name: 'Barcelona'}]
+            {iso: 'antarctica,aq', name: 'Antarctica'}, {tz: 'Europe/Madrid', iso: 'barcelona,es', name: 'Barcelona'}];
 
   constructor(private weatherSummaryService: WeatherSummaryService) { }
 

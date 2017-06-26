@@ -5,7 +5,6 @@ import {WeatherSummaryService} from '../service/weather-summary.service';
   selector: 'app-local',
   templateUrl: './local.component.html',
   styleUrls: ['./local.component.css'],
-  providers: [WeatherSummaryService]
 })
 export class LocalComponent implements OnInit, OnChanges {
  @Input() localCoord: Object;

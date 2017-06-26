@@ -15,10 +15,11 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 
 -- remove main.css from index.html
 -- move main.css styles to bundled css file in dist
--- delete all but favicon and index.php from deploy/sist
--- put dist  folder CONTENTS into code/weather-deploy/dist (replacing existing)
+-- delete all but favicon and index.php from deploy/dist
 -- cd code/weather-deploy/dist
--- git add ., commit push heroku master
+-- put dist  folder CONTENTS into weather-deploy/dist (replacing existing)
+-- git add ., commit
+-- git push heroku master
 
 ## Running unit tests
 

@@ -1,5 +1,5 @@
 <section id="cities">
-  <ul *ngIf="showCities">
+  <ul *ngIf="showCities" (mouseleave)="toggleCities()">
     <li *ngFor="let city of cities" (click)="getWeather(city.iso, city.tz)">
       {{city.name}}
     </li>

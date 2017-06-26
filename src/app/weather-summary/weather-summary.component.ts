@@ -6,7 +6,7 @@ import { Component, OnInit, OnChanges, Input } from '@angular/core';
   styleUrls: ['./weather-summary.component.css']
 })
 export class WeatherSummaryComponent implements OnInit, OnChanges {
-  @Input() weatherSummary: Object;
+  @Input() weatherSummary: Object
   locale: String;
   conditionIcon: String;
   apiData: boolean;
