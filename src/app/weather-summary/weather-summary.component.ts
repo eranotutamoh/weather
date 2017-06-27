@@ -41,7 +41,10 @@ export class WeatherSummaryComponent implements OnInit, OnChanges {
       this.pressure = weather.main.pressure;
       this.humidity = weather.main.humidity;
       this.temp = weather.main.temp;
-      if ('rain' in weather) { this.rain = weather.rain['3h']; }
+      if ('rain' in weather) { this.rain = weather.rain['3h'];
+      } else {
+        this.rain = null;
+      }
       this.sunrise = this.formatTime(weather.sys.sunrise, weather.tz);
       this.sunset = this.formatTime(weather.sys.sunset, weather.tz);
       this.apiData = true;
