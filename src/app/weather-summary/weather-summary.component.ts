@@ -6,7 +6,7 @@ import { Component, OnInit, OnChanges, Input } from '@angular/core';
   styleUrls: ['./weather-summary.component.css']
 })
 export class WeatherSummaryComponent implements OnInit, OnChanges {
-  @Input() weatherSummary: Object
+  @Input() weatherSummary: Object;
   locale: String;
   conditionIcon: String;
   apiData: boolean;
@@ -18,7 +18,6 @@ export class WeatherSummaryComponent implements OnInit, OnChanges {
   rain: Number;
   sunrise: String;
   sunset: String;
-  error: String;
 
   constructor() { }
 
@@ -31,9 +30,7 @@ export class WeatherSummaryComponent implements OnInit, OnChanges {
   }
 
   formatWeather(weather) {
-    if (weather.error) {
-      this.error = weather.error;
-    } else {
+    if (!weather.error) {
       this.locale = weather.name;
       this.conditionIcon = `http://openweathermap.org/img/w/${weather.weather[0].icon}.png`;
       this.windSpeed = this.formatWindSpeed(weather.wind.speed);
@@ -41,10 +38,7 @@ export class WeatherSummaryComponent implements OnInit, OnChanges {
       this.pressure = weather.main.pressure;
       this.humidity = weather.main.humidity;
       this.temp = weather.main.temp;
-      if ('rain' in weather) { this.rain = weather.rain['3h'];
-      } else {
-        this.rain = null;
-      }
+      this.rain = ('rain' in weather) ? weather.rain['3h'] : null;
       this.sunrise = this.formatTime(weather.sys.sunrise, weather.tz);
       this.sunset = this.formatTime(weather.sys.sunset, weather.tz);
       this.apiData = true;

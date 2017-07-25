@@ -1,5 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import {WeatherSummaryService} from '../service/weather-summary.service';
+import { MessagerService } from '../service/messager.service';
 import { Observable } from 'rxjs/';
 import { CitiesComponent } from './cities.component';
 
@@ -22,7 +23,7 @@ describe('CitiesComponent', () => {
     .overrideComponent(CitiesComponent, {
       set: {
         providers: [
-          { provide: WeatherSummaryService, useClass: WeatherSummaryServiceSpy }
+          { provide: WeatherSummaryService, useClass: WeatherSummaryServiceSpy }, MessagerService
         ]
       }
     })

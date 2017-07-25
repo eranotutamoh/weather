@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, OnChanges, Input, Output } from '@angular/core';
 import {WeatherSummaryService} from '../service/weather-summary.service';
+import { MessagerService } from '../service/messager.service';
 
 @Component({
   selector: 'app-local',
@@ -12,7 +13,7 @@ export class LocalComponent implements OnInit, OnChanges {
  weather: Object;
  errorMessage: string;
 
-  constructor(private weatherSummaryService: WeatherSummaryService) { }
+  constructor(private weatherSummaryService: WeatherSummaryService, private messagerService: MessagerService) { }
 
   ngOnInit() {
   }
@@ -26,9 +27,8 @@ export class LocalComponent implements OnInit, OnChanges {
                   return weather;
               },
               error => {
-                  console.log(<any>error);
-                  this.weather = {error: 'Problem accessing weather.'};
-                  this.updateWeather();
+                  console.error(<any>error);
+                  this.messagerService.sendMessage('Cannot access weather information.');
               }
             );
       }

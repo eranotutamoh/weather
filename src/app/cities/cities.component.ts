@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import {WeatherSummaryService} from '../service/weather-summary.service';
+import { MessagerService } from '../service/messager.service';
 
 @Component({
   selector: 'app-cities',
@@ -16,7 +17,7 @@ export class CitiesComponent  {
             {tz: 'Australia/Perth', iso: 'perth,au', name: 'Perth WA'}, {tz: 'Asia/Singapore', iso: 'singapore,sg', name: 'Singapore'},
             {iso: 'antarctica,aq', name: 'Antarctica'}, {tz: 'Europe/Madrid', iso: 'barcelona,es', name: 'Barcelona'}];
 
-  constructor(private weatherSummaryService: WeatherSummaryService) { }
+  constructor(private weatherSummaryService: WeatherSummaryService, private messagerService: MessagerService) { }
 
   toggleCities() {
     this.showCities = !this.showCities;
@@ -33,8 +34,7 @@ export class CitiesComponent  {
         },
         error => {
           console.log(<any>error);
-          this.weather = {error: 'Problem accessing weather.'};
-          this.updateWeather();
+          this.messagerService.sendMessage('Cannot access weather information.');
         }
     );
   }

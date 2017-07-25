@@ -2,6 +2,7 @@ import { async, ComponentFixture, TestBed,  } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 import {WeatherSummaryService} from '../service/weather-summary.service';
+import { MessagerService } from '../service/messager.service';
 import {LocalService} from '../service/local.service';
 import { LocalComponent } from './local.component';
 import { Observable } from 'rxjs/';
@@ -20,7 +21,7 @@ describe('LocalComponent ', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ LocalComponent ],
-      providers: [LocalService]
+      providers: [LocalService, MessagerService]
     })
     .overrideComponent(LocalComponent, {
             set: {
@@ -55,7 +56,7 @@ describe('LocalComponent when inside a test host', () => {
       set: {
         template: '<p>{{localCoord.lat}}</p>',
         providers: [
-          { provide: WeatherSummaryService, useClass: WeatherSummaryServiceSpy }
+          { provide: WeatherSummaryService, useClass: WeatherSummaryServiceSpy } , MessagerService
         ]
       }
     });
